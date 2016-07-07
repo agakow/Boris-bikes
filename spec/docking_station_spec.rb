@@ -4,7 +4,6 @@ describe DockingStation do
   it { is_expected.to respond_to :release_bike }
   it { is_expected.to respond_to :dock }
   it { is_expected.to respond_to :bikes }
-
   describe '#release_bike' do
 
     it 'raises an error' do
@@ -22,7 +21,8 @@ describe DockingStation do
   describe '#dock' do
 
     it 'raises an error when full' do
-      expect {21.times{ subject.dock(Bike.new) }}.to raise_error 'No spaces to dock bike'
+      DockingStation::DEFAULT_CAPACITY.times {subject.dock Bike.new}
+      expect {subject.dock(Bike.new)}.to raise_error 'No spaces to dock bike'
     end
 
     it 'docks a bike' do
