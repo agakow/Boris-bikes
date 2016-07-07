@@ -1,5 +1,6 @@
 require 'docking_station.rb'
 
+
 describe DockingStation do
   it { is_expected.to respond_to :release_bike }
   it { is_expected.to respond_to :dock }
@@ -7,8 +8,15 @@ describe DockingStation do
 
   describe '#release_bike' do
 
-    it 'raises an error' do
+    it 'raises an error when empty' do
       expect { subject.release_bike }.to raise_error 'No bikes available'
+    end
+
+    it 'raises an error when all bikes are broken' do
+      bike = Bike.new
+      bike.report
+      subject.dock(bike)
+      expect { subject.release_bike }.to raise_error 'All bikes are broken'
     end
 
     it 'release working bikes' do
