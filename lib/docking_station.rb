@@ -9,8 +9,9 @@ class DockingStation
     @capacity = capacity
   end
 
-  def release_bike
+  def release_bike                      #returns last bike in bikes even if broken
     fail 'No bikes available' if empty?
+    fail 'All bikes are broken' if bikes.count == bikes.count {|bike| bike.working? == false}
     bikes.pop
   end
 
