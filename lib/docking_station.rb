@@ -16,13 +16,11 @@ attr_reader :bikes
     raise 'No bikes availible' if empty?
     raise 'Bike is broken' if bikes.last.broken?
     bikes.pop
-
   end
 
   def dock bike
     raise 'The dock is full' if full?
     bikes << bike
-
   end
 
   private
