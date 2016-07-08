@@ -11,7 +11,7 @@ class DockingStation
 
   def release_bike
     fail 'No bikes available' if empty?
-    fail 'All bikes are broken' if bikes.count == bikes.count {|bike| bike.working? == false}
+    fail 'All bikes are broken' unless bikes.last.working?
     bike = bikes.select{|bike| bike.working?}.pop
     bikes.delete(bike)
   end

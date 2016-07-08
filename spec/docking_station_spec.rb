@@ -13,14 +13,14 @@ describe DockingStation do
     end
 
     it 'raises an error when all bikes are broken' do
-      bike = double :bike
+      bike  = double(:bike, :report => false, :working? => false)
       bike.report
       subject.dock(bike)
       expect { subject.release_bike }.to raise_error 'All bikes are broken'
     end
 
     it 'release working bikes' do
-      bike = double :bike
+      bike = double(:bike, :working? => true)
       subject.dock(bike)
       bike = subject.release_bike
       expect(bike).to be_working
