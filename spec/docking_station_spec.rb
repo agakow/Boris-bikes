@@ -53,16 +53,4 @@ describe DockingStation do
 
   end
 
-  describe '#broken_bikes' do
-
-    it 'separates broken bikes' do
-      bike = double(:bike, :working? => false)
-      subject.dock(bike)
-      expect(subject.broken_bikes).to eq [bike]
-    end
-
-  end
-
-
-
 end
