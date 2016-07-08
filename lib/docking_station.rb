@@ -1,5 +1,6 @@
 require_relative 'bike'
 require_relative 'van'
+require_relative 'garages'
 
 class DockingStation
   DEFAULT_CAPACITY = 20
@@ -24,11 +25,6 @@ class DockingStation
     bikes << bike
     bike
   end
-
-  #def broken_bikes
-  #  brokenbikes = bikes.select {|bike| bike.working? == false }
-  #  brokenbikes.takes_broken_bikes
-#  end
 
   private
 
